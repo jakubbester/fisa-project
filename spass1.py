@@ -25,6 +25,7 @@ predicates[
 (section2511,2),(consent,2),
 (intentional,2),
 (installOrUse,2),(monitor,2),
+(authorize,2),(investigation,2),(relevant,2),(onlyRelevant,2),
 (formAcquSurv,1),(formSurv,1),(formSendReceive,1),(formTarget,1),(formWireSurv,1),(formConsent,1),(formIntlAcquSurv,1),(formRadioSurv,1),(formRadioTarget,1),(formInstallUse,1),(formNotWireRadioSurv,1),(formPriv,1),
 (electronicSurv,1)
 ].
@@ -41,7 +42,7 @@ formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetP
 formula(forall([X],implies(or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv))),formAcquSurv(X)))).
 formula(forall([X],implies(form(X,wire),formWireSurv(X)))).
 formula(forall([X],implies(or(and(nationality(sender,usa),location(sender,usa)),and(nationality(receiver,usa),location(receiver,usa))),formSendReceive(X)))).
-formula(forall([X],implies(and(consent(message,no),section2511(message,no)),formConsent(X)))).
+formula(forall([X],implies(and(consent(message,no),not(section2511(message,yes))),formConsent(X)))).
 
 %def 3
 formula(forall([X],implies(and(intentional(X,yes),or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv)))),formIntlAcquSurv(X)))).
@@ -53,6 +54,8 @@ formula(forall([X],implies(and(monitor(message,yes),and(location(device,usa),or(
 formula(forall([X],implies(not(or(form(X,radio),form(X,wire))),formNotWireRadioSurv(X)))).
 formula(forall([X],implies(and(needWarrant(targetPerson,yes),privacy(targetPerson,yes)),formPriv(X)))).
 
+%form2511
+formula(forall([X],implies(and(onlyRelevant(targetPerson,yes),relevant(targetPerson,yes),and(investigation(targetPerson,yes),authorize(targetPerson,yes))),section2511(message,yes)))).
 
 %to get from frontend
 formula(formAcqu(message,otherSurv)).
@@ -63,14 +66,12 @@ formula(nationality(receiver,none)).
 formula(location(receiver,none)).
 formula(nationality(targetPerson,usa)).
 formula(privacy(targetPerson,yes)).
-formula(needWarrant(targetPerson,no)).
+formula(needWarrant(targetPerson,yes)).
 formula(consent(message,no)).
-formula(section2511(message,no)).
 formula(intentional(message,yes)).
 formula(installOrUse(message,otherSurv)).
 formula(monitor(message,yes)).
 formula(location(device,usa)).
-
 
 %overall
 formula(sentBy(message,sender)).
