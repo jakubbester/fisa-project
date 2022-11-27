@@ -51,19 +51,108 @@
     </div>
     <div id="form" class="style">
         <form method="post">
-            Message: <input name="name"/>
+            How was the information acquired?<select name="formAcqu" id="formAcqu">
+                <option value="electronic">Electronic device</option>
+                <option value="mechanical">Mechanical device</option>
+                <option value="otherSurv">Other Surveillance Device</option>
+                <option value="none">None of the above</option>
+            </select>
             <br/><br/>
-            Sender: <input name="email"/>
+            What was the format of the communication?<select name="form" id="form">
+                <option value="radio">Radio</option>
+                <option value="wire">Wire</option>
+                <option value="none">None of the above</option>
+            </select>
             <br/><br/>
-            Receiver: <input name="email"/>
+            What is the sender's nationality?<select name="nationalitySender" id="nationalitySender">
+                <option value="usa">USA</option>
+                <option value="none">Foreign</option>
+            </select>
             <br/><br/>
-            Target Person: <input name="email"/>
+            What is the sender's location?<select name="locationSender" id="locationSender">
+                <option value="usa">USA</option>
+                <option value="none">Foreign</option>
+            </select>
             <br/><br/>
-            Target Car: <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            What is the receiver's nationality?<select name="nationalityReceiver" id="nationalityReceiver">
+                <option value="usa">USA</option>
+                <option value="none">Foreign</option>
+            </select>
+            <br/><br/>
+            What is the receiver's location?<select name="locationReceiver" id="locationReceiver">
+                <option value="usa">USA</option>
+                <option value="none">Foreign</option>
+            </select>
+            <br/><br/>
+            Was there a reasonable expectation of privacy?<select name="privacy" id="privacy">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Would a warrant be required for law enforcement purposes?<select name="needWarrant" id="needWarrant">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Is the person being targeting a USA national?<select name="targetNationality" id="targetNationality">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Did the target consent to being monitored?<select name="consent" id="consent">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Section 2511
+            <br/><br/>
+            Did the target authorize interception of communication?<select name="authorize" id="authorize">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Is the interceptor lawfully engaged in an investigation?<select name="investigation" id="investigation">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Are there reasonable grounds to believe that the contents of the communication will be relevant to the investigation?<select name="relevant" id="relevant">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Was the acquired information only the authorized information?<select name="onlyRelevant" id="onlyRelevant">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Non section2511
+            <br/><br/>
+            Was the acquired information only the authorized information?<select name="onlyRelevant" id="onlyRelevant">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Was the acquiring intentional?<select name="intentional" id="intentional">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Is there an installation of a device that could be used for monitoring?<select name="installOrUse" id="installOrUse">
+                <option value="electronic">Yes, an electronic device</option>
+                <option value="mechanical">Yes, a mechanical device</option>
+                <option value="otherSurv">Yes, an other surveillance device</option>
+                <option value="none">No</option>
+            </select>
+            <br/><br/>
+            Is the purpose of this device to monitor to acquire information?<select name="monitor" id="monitor">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br/><br/>
+            Is this device in the USA?<select name="locationDevice" id="locationDevice">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
             </select>
             <br/><br/>
             <button type="submit">Submit</button>
