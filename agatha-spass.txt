@@ -1,0 +1,89 @@
+%% this program was tested in SPASS (webSPASS)
+%% https://webspass.spass-prover.org/
+
+
+begin_problem(Agatha).
+
+list_of_descriptions.
+name({*Dreadbury Mansion  Mistery*}).
+author({*Ruzica Piskac*}).
+status(unsatisfiable).
+description({*Someone who lives in Dreadbury Mansion killed Aunt Agatha. 
+               Agatha, the butler, and Charles live in Dreadbury Mansion, 
+               and are the only people who live therein. A killer always 
+               hates his victim, and is never richer than his victim. 
+               Charles hates no one that Aunt Agatha hates. Agatha hates 
+                everyone except the butler. The butler hates everyone not 
+               richer than Aunt Agatha. The butler hates everyone Aunt 
+               Agatha hates. No one hates everyone. Agatha is not the 
+              butler.*}).
+end_of_list.
+
+list_of_symbols.
+  functions[(a,0), (b,0), (c,0)].
+  predicates[(lives,1), (killed,2), (hates, 2), (richer,2)].
+end_of_list.
+
+list_of_formulae(axioms).
+
+formula(exists([X],
+    and(lives(X),killed(X,a))
+)).
+
+formula(and(lives(a),
+    and(lives(b),lives(c))
+)).
+
+formula(forall([X],
+  implies(lives(X),
+  or(equal(X,a), or(equal(X,b), equal(X,c)))
+))).
+
+
+formula(forall([X, Y],
+  implies(killed(X,Y),
+  and(hates(X,Y), not(richer(X,Y)))
+))).
+
+formula(forall([X],
+  implies(hates(a,X),
+  not(hates(c,X))
+))).
+
+formula(forall([X],
+  implies(not(equal(X,b)),
+  hates(a,X)
+))).
+
+
+formula(forall([X],
+  implies(not(richer(X,a)),
+  hates(b,X)
+))).
+
+
+formula(forall([X],
+  implies(hates(a,X),
+  hates(b,X)
+))).
+
+
+formula(forall([X], exists([Y],
+   not(hates(X,Y))
+))).
+
+
+formula(
+   not(equal(a,b))
+).
+
+
+end_of_list.
+
+list_of_formulae(conjectures).
+
+formula(killed(c,a)).
+
+end_of_list.
+
+end_problem.

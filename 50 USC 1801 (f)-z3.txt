@@ -1,12 +1,11 @@
-begin_problem(fisa).
+(set-logic UF)
+(declare-sort P 0)
 
-list_of_descriptions.
-name({*Pelletier's Problem No. 54*}).
-author({*Christoph Weidenbach*}).
-status(unsatisfiable).
-description({*Problem taken in revised form from the "Pelletier Collection", Journal of Automated
-	Reasoning, Vol. 2, No. 2, pages 191-216*}).
-end_of_list.
+;; 
+(declare-fun )
+
+
+
 
 list_of_symbols.
 functions[
