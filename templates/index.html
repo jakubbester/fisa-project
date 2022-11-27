@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            font-family: Helvetica;
+        }
+
+        body {
+            width: 50%;
+            margin: auto;
+        }
+
+        input[type=text]:focus {
+            border: 3px solid #555;
+            padding: 10px;
+        }
+
+        .style {
+            background-color: gray;
+            border: 1px solid black;
+            border-radius: 5px;
+
+            padding: 2px;
+            margin: 5px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        #correct {
+            background-color: lightgreen;
+            padding: 2px;
+        }
+
+        #wrong {
+            background-color: lightcoral;
+            padding: 2px;
+        }
+        
+        #waiting {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="header" class="style center">
+        <h1>Project #2 (FISA Project)</h1>
+        <h5>Alex Shi & Jakub Bester</h5>
+    </div>
+    <div id="form" class="style">
+        <form method="post">
+            Message: <input name="name"/>
+            <br/><br/>
+            Sender: <input name="email"/>
+            <br/><br/>
+            Receiver: <input name="email"/>
+            <br/><br/>
+            Target Person: <input name="email"/>
+            <br/><br/>
+            Target Car: <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <br/><br/>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="result" class="style center">
+        {% if data == True %}
+            <p id="correct">
+                Surveillance Scenario DOES fall under FISA's definition of "Electronic Surveillance"
+            </p>
+        {% elif data == False %}
+            <p id="wrong">
+                Surveillance Scenario DOES NOT fall under FISA's definition of "Electronic Surveillance"
+            </p>
+        {% else %}
+            <p id="waiting">
+                Input your selection using the form above.
+            </p>
+        {% endif %}
+    </div>
+</body>
+</html>
