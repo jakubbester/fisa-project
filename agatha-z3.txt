@@ -1,0 +1,42 @@
+(set-logic UF)
+(declare-sort P 0)
+(declare-fun lives (P) Bool)
+(declare-fun richer (P P) Bool)
+(declare-fun hates (P P) Bool)
+(declare-fun killed (P P) Bool)
+(declare-fun a () P) ;; Aunt Agatha
+(declare-fun b () P) ;; the butler
+(declare-fun c () P) ;; Charles
+(declare-fun killer () P) ;; the killer
+
+;; Someone who lived in Dreadbury Mansion killed Aunt Agatha
+;;(assert (exists ((x P)) (and (lives x) (killed x a))))
+(assert (and (lives killer) (killed killer a)))
+
+;; Agatha, the Butler and Charles were the only people who lived in Dreadbury Mansion
+(assert (forall ((x P)) (= (lives x) (or (= x a) (= x b) (= x c))))) 
+
+;; A killer always hates his victim, and is never richer than his victim
+(assert (forall ((x P) (y P))
+                (=> (killed x y) (and (hates x y) (not (richer x y)))))) 
+
+;; Charles hates no one that aunt Agatha hates
+(assert (forall ((x P)) (=> (hates a x) (not (hates c x)))))
+
+;; Agatha hates everyone except the butler
+(assert (forall ((x P)) (= (hates a x) (not (= x b)))))
+
+;; The butler hates everyone not richer than Aunt Agatha
+(assert (forall ((x P)) (or (richer x a) (hates b x))))
+
+;; The butler also hates everyone Agatha hates
+(assert (forall ((x P)) (=> (hates a x) (hates b x))))
+
+;; No one hates everyone
+(assert (forall ((x P)) (exists ((y P)) (not (hates x y)))))
+
+;; Agatha is not the butler
+(assert (not (= a b)))
+
+(check-sat)
+(get-model)

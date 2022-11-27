@@ -3,9 +3,12 @@ from z3 import *
 
 # HANDLE LOGIC
 def logic_handler(request):
-    # Tie, Shirt = Bools('Tie Shirt')
-    # s = Solver()
-    # s.add(Or(Tie, Shirt), Or(Not(Tie), Shirt), Or(Not(Tie), Not(Shirt)))
+    s = Solver()
+    print(s.from_file("agatha-z3.txt"))
+    # print(s.proof())
+    print(s.check())
+    print(s.model())
+
     return True
 
 # CREATE FLASK APP
