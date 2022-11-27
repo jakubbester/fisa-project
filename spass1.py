@@ -14,41 +14,74 @@ functions[
 (electronic,0),(mechanical,0),(otherSurv,0),
 (wire,0),(radio,0),
 (sender,0),(receiver,0),(usa,0),
-(targetPerson,0)
+(targetPerson,0),
+(device,0)
 ].
 predicates[
 (formAcqu,2),
 (form,2),
 (sentBy,2),(nationality,2),(location,2),(receivedBy,2),
 (target,2),(privacy,2),(needWarrant,2),
-(formAcquSurv,1),(formSurv,1),(formSendReceive,1),(formTarget,1),
+(section2511,2),(consent,2),
+(intentional,2),
+(installOrUse,2),(monitor,2),
+(formAcquSurv,1),(formSurv,1),(formSendReceive,1),(formTarget,1),(formWireSurv,1),(formConsent,1),(formIntlAcquSurv,1),(formRadioSurv,1),(formRadioTarget,1),(formInstallUse,1),(formNotWireRadioSurv,1),(formPriv,1),
 (electronicSurv,1)
 ].
 end_of_list.
 
 list_of_formulae(axioms).
+%def 1
 formula(forall([X],implies(or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv))),formAcquSurv(X)))).
 formula(forall([X],implies(or(form(X,wire),form(X,radio)),formSurv(X)))).
 formula(forall([X],implies(or(and(nationality(sender,usa),location(sender,usa)),and(nationality(receiver,usa),location(receiver,usa))),formSendReceive(X)))).
-formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetPerson,yes),and(target(message,targetPerson),nationality(targetPerson,usa)))),formTarget(X)))).
+formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetPerson,yes),nationality(targetPerson,usa))),formTarget(X)))).
+
+%def 2
+formula(forall([X],implies(or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv))),formAcquSurv(X)))).
+formula(forall([X],implies(form(X,wire),formWireSurv(X)))).
+formula(forall([X],implies(or(and(nationality(sender,usa),location(sender,usa)),and(nationality(receiver,usa),location(receiver,usa))),formSendReceive(X)))).
+formula(forall([X],implies(and(consent(message,no),section2511(message,no)),formConsent(X)))).
+
+%def 3
+formula(forall([X],implies(and(intentional(X,yes),or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv)))),formIntlAcquSurv(X)))).
+formula(forall([X],implies(form(X,radio),formRadioSurv(X)))).
+formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetPerson,yes),and(location(sender,usa),location(receiver,usa)))),formRadioTarget(X)))).
+
+%def 4
+formula(forall([X],implies(and(monitor(message,yes),and(location(device,usa),or(installOrUse(X,electronic),or(installOrUse(X,mechanical),installOrUse(X,otherSurv))))),formInstallUse(X)))).
+formula(forall([X],implies(not(or(form(X,radio),form(X,wire))),formNotWireRadioSurv(X)))).
+formula(forall([X],implies(and(needWarrant(targetPerson,yes),privacy(targetPerson,yes)),formPriv(X)))).
 
 
+%to get from frontend
 formula(formAcqu(message,otherSurv)).
 formula(form(message,wire)).
 formula(nationality(sender,usa)).
 formula(location(sender,usa)).
 formula(nationality(receiver,none)).
 formula(location(receiver,none)).
-formula(target(message,targetPerson)).
 formula(nationality(targetPerson,usa)).
 formula(privacy(targetPerson,yes)).
 formula(needWarrant(targetPerson,no)).
+formula(consent(message,no)).
+formula(section2511(message,no)).
+formula(intentional(message,yes)).
+formula(installOrUse(message,otherSurv)).
+formula(monitor(message,yes)).
+formula(location(device,usa)).
 
 
-
+%overall
 formula(sentBy(message,sender)).
 formula(receivedBy(message,receiver)).
-formula(forall([X],implies(and(formTarget(X),and(formSendReceive(X),and(formAcquSurv(X),formSurv(X)))),electronicSurv(X)))).
+formula(target(message,targetPerson)).
+formula(forall([X],implies(
+or(and(formInstallUse(X),and(formNotWireRadioSurv(X),formPriv(X))),
+or(and(formIntlAcquSurv(X),and(formRadioSurv(X),formRadioTarget(X))),
+or(and(formTarget(X),and(formSendReceive(X),and(formAcquSurv(X),formSurv(X)))),
+and(formAcquSurv(X),and(formWireSurv(X),and(formSendReceive(X),formConsent(X))))))),
+electronicSurv(X)))).
 end_of_list.
 
 
