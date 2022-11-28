@@ -125,7 +125,7 @@
 )))
 
 ;; from Frontend Part
-(assert (formAcqu message none)) ;; otherSurv
+(assert (formAcqu message otherSurv))
 (assert (form message wire))
 (assert (nationality sender usa))
 (assert (location sender usa))

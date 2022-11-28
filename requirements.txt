@@ -1,0 +1,4 @@
+flask
+z3-solver
+selenium
+webdriver-manager
