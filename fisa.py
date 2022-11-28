@@ -2,7 +2,6 @@ from time import sleep # to use together with Selenium
 
 # IMPORT FLASK (for website server) AND Z3
 from flask import *
-from z3 import *
 
 # IMPORT REQUIRED SELENIUM MODULES
 from selenium import webdriver

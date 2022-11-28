@@ -8,6 +8,7 @@
 
         body {
             width: 50%;
+            background-color: rgb(203, 203, 203);
             margin: auto;
         }
 
@@ -17,168 +18,195 @@
         }
 
         .style {
-            background-color: gray;
-            border: 1px solid black;
-            border-radius: 5px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+
+            box-shadow: 0 0 50px rgb(61, 60, 60);
 
             padding: 2px;
-            margin: 5px;
+            margin: 10px 5px;
         }
 
         .center {
             text-align: center;
         }
 
-        #result {
-            padding: 5px
+        h1 {
+            margin: 15px 0 15px 0;
+        }
+
+        h5 {
+            margin: 0 0 15px 0;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        select {
+            padding: 5px;
+            margin: 0 0 0 15px;
+        }
+
+        button {
+            padding: 7.5px 12.5px;
         }
 
         #correct {
-            background-color: lightgreen;
-            border-radius: 5px;
+            background-color: rgb(54, 156, 54);
+            border-radius: 10px;
+            color: white;
+            
+            box-shadow: 0 0 50px rgb(61, 60, 60);
 
-            padding: 5px 10px;
-            margin: 5px;
+            padding: 20px;
+            margin: 10px 5px;
         }
 
         #wrong {
-            background-color: lightcoral;
-            border-radius: 5px;
+            background-color: rgb(175, 69, 69);
+            border-radius: 10px;
+            color: white;
 
-            padding: 5px 2px;
-            margin: 5px;
+            box-shadow: 0 0 50px rgb(61, 60, 60);
+
+            padding: 20px;
+            margin: 10px 5px;
         }
         
         #waiting {
-            background-color: lightblue;
-            border-radius: 5px;
+            background-color: rgb(77, 77, 81);
+            border-radius: 10px;
+            color: white;
 
-            padding: 5px 10px;
-            margin: 5px;
+            box-shadow: 0 0 50px rgb(61, 60, 60);
+
+            padding: 20px;
+            margin: 10px 5px;
         }
     </style>
 </head>
 <body>
     <div id="header" class="style center">
-        <h1>Project #2 (FISA Project)</h1>
+        <h1><b>Project #2 (FISA Project)</b></h1>
         <h5>Alex Shi & Jakub Bester</h5>
     </div>
     <div id="form" class="style">
         <form method="post">
-            How was the information acquired?<select name="*formAcqu*" id="formAcqu"> <!--this maps to formAcqu(message,)-->
+            How was the <b>information</b> acquired?<select name="*formAcqu*" id="formAcqu"> <!--this maps to formAcqu(message, *placeHolder*)-->
                 <option value="electronic">Electronic device</option>
                 <option value="mechanical">Mechanical device</option>
                 <option value="otherSurv">Other Surveillance Device</option>
-                <option value="none">None of the above</option>
+                <option value="none">None of the Above</option>
             </select>
             <br/><br/>
-            What was the format of the communication?<select name="*form*" id="form"> <!--this maps to form(message,)-->
+            What was the <b>format of the communication?</b><select name="*form*" id="form"> <!--this maps to form(message, *placeHolder*)-->
                 <option value="radio">Radio</option>
                 <option value="wire">Wire</option>
-                <option value="none">None of the above</option>
+                <option value="none">None of the Above</option>
             </select>
             <br/><br/>
-            What is the sender's nationality?<select name="*nationalitySender*" id="nationalitySender"> <!--this maps to nationality(sender,)-->
-                <option value="usa">USA</option>
+            What is the <b>sender's nationality</b>?<select name="*nationalitySender*" id="nationalitySender"> <!--this maps to nationality(sender, *placeHolder*)-->
+                <option value="usa">U.S.A.</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            What is the sender's location?<select name="*locationSender*" id="locationSender"> <!--this maps to location(sender,)-->
-                <option value="usa">USA</option>
+            What is the <b>sender's location</b>?<select name="*locationSender*" id="locationSender"> <!--this maps to location(sender, *placeHolder*)-->
+                <option value="usa">U.S.A.</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            What is the receiver's nationality?<select name="*nationalityReceiver*" id="nationalityReceiver"> <!--this maps to nationality(receiver,)-->
-                <option value="usa">USA</option>
+            What is the <b>receiver's nationality</b>?<select name="*nationalityReceiver*" id="nationalityReceiver"> <!--this maps to nationality(receiver, *placeHolder*)-->
+                <option value="usa">U.S.A.</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            What is the receiver's location?<select name="*locationReceiver*" id="locationReceiver"> <!--this maps to location(receiver,)-->
-                <option value="usa">USA</option>
+            What is the <b>receiver's location</b>?<select name="*locationReceiver*" id="locationReceiver"> <!--this maps to location(receiver, *placeHolder*)-->
+                <option value="usa">U.S.A.</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            Was there a reasonable expectation of privacy?<select name="*privacy*" id="privacy"> <!--this maps to privacy(targetPerson,)-->
+            Was there a <b>reasonable expectation of privacy</b>?<select name="*privacy*" id="privacy"> <!--this maps to privacy(targetPerson, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Would a warrant be required for law enforcement purposes?<select name="*needWarrant*" id="needWarrant"> <!--this maps to needWarrant(targetPerson,)-->
+            Would a <b>warrant</b> be required for law enforcement purposes?<select name="*needWarrant*" id="needWarrant"> <!--this maps to needWarrant(targetPerson, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Is the person being targeting a USA national?<select name="*targetNationality*" id="targetNationality"> <!--this maps to nationality(targetPerson,)-->
+            Is the person being targeting a <b>USA national</b>?<select name="*targetNationality*" id="targetNationality"> <!--this maps to nationality(targetPerson, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Did the target consent to being monitored?<select name="*consent*" id="consent"> <!--this maps to consent(message,)-->
+            Did the target <b>consent</b> to being monitored?<select name="*consent*" id="consent"> <!--this maps to consent(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Section 2511
+            <b>Section 2511</b>
             <br/><br/>
-            Did the target authorize interception of communication?<select name="*authorize*" id="authorize"> <!--this maps to authorize(message,)-->
+            Did the target <b>authorize interception</b> of communication?<select name="*authorize*" id="authorize"> <!--this maps to authorize(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Is the interceptor lawfully engaged in an investigation?<select name="*investigation*" id="investigation"> <!--this maps to investigation(message,)-->
+            Is the interceptor lawfully engaged in an <b>investigation</b>?<select name="*investigation*" id="investigation"> <!--this maps to investigation(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Are there reasonable grounds to believe that the contents of the communication will be relevant to the investigation?<select name="*relevant*" id="relevant"> <!--this maps to relevant(message,)-->
+            Will the <b>contents of the communication</b> be relevant to the investigation?<select name="*relevant*" id="relevant"> <!--this maps to relevant(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Was the acquired information only the authorized information?<select name="*onlyRelevant*" id="onlyRelevant"> <!--this maps to onlyRelevant(message,)-->
+            Was the acquired information only the <b>authorized information</b>?<select name="*onlyRelevant*" id="onlyRelevant"> <!--this maps to onlyRelevant(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Non-Section2511
+            <b>Non-Section2511</b>
             <br/><br/>
-            Was the acquiring intentional?<select name="*intentional*" id="intentional"> <!--this maps to intentional(message,)-->
+            Was the <b>acquisition intentional</b>?<select name="*intentional*" id="intentional"> <!--this maps to intentional(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Is there an installation of a device that could be used for monitoring?<select name="*installOrUse*" id="installOrUse"> <!--this maps to installOrUse(message,)-->
-                <option value="electronic">Yes, an electronic device</option>
-                <option value="mechanical">Yes, a mechanical device</option>
-                <option value="otherSurv">Yes, an other surveillance device</option>
+            Is there an <b>installation of a device</b> that could be used for monitoring?<select name="*installOrUse*" id="installOrUse"> <!--this maps to installOrUse(message, *placeHolder*)-->
+                <option value="electronic">Yes, an Electronic Device</option>
+                <option value="mechanical">Yes, a Mechanical Device</option>
+                <option value="otherSurv">Yes, another Surveillance Device</option>
                 <option value="none">No</option>
             </select>
             <br/><br/>
-            Is the purpose of this device to monitor to acquire information?<select name="*monitor*" id="monitor"> <!--this maps to monitor(message,)-->
+            Is the <b>purpose</b> of this monitoring device to acquire information?<select name="*monitor*" id="monitor"> <!--this maps to monitor(message, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Is this device in the USA?<select name="*locationDevice*" id="locationDevice"> <!--this maps to location(device,)-->
+            Is this <b>device</b> in the <b>USA</b>?<select name="*locationDevice*" id="locationDevice"> <!--this maps to location(device, *placeHolder*)-->
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            <button type="submit">Submit</button>
+            <button type="submit"><b>Submit</b></button>
         </form>
     </div>
     <div id="result" class="center">
         {% if data == True %}
             <p id="correct">
-                Surveillance Scenario DOES fall under FISA's definition of "Electronic Surveillance"
+                <b>Surveillance Scenario DOES fall under FISA's definition of "Electronic Surveillance"</b>
             </p>
         {% elif data == False %}
             <p id="wrong">
-                Surveillance Scenario DOES NOT fall under FISA's definition of "Electronic Surveillance"
+                <b>Surveillance Scenario DOES NOT fall under FISA's definition of "Electronic Surveillance"</b>
             </p>
         {% else %}
             <p id="waiting">
-                Input your selection using the form above.
+                <b>Input your selection using the form above.</b>
             </p>
         {% endif %}
     </div>
