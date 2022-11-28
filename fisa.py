@@ -1,8 +1,16 @@
+from time import sleep # to use together with Selenium
+
+# IMPORT FLASK (for website server) AND Z3
 from flask import *
 from z3 import *
+
+# IMPORT REQUIRED SELENIUM MODULES
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 NAMES = [
     "*formAcqu*",
@@ -13,42 +21,60 @@ NAMES = [
     "*locationReceiver*",
     "*privacy*",
     "*needWarrant*",
-    "*targetNationaliy*",
+    "*targetNationality*",
     "*consent*",
-
     "*authorize*",
     "*investigation*",
-
+    "*relevant*",
+    "*onlyRelevant*",
+    "*intentional*",
+    "*installOrUse*",
+    "*monitor*",
+    "*locationDevice*",
 ]
 
 # HANDLE LOGIC
 def logic_handler(request):
     # FILE MANIPULATION
-    data1 = None; data2 = None
-    with open("50 USC 1801 (f)-z3-tmp1.txt", "r") as file:
-        data1 = file.read()
-        data2 = data1
-
-        # for name in NAMES:
-            # data2 = data1.replace(name, request.form.get(name)) # replace placeholders
+    data = None
+    with open("50 USC 1801 (f)-spass-tmp1.txt", "r") as file:
+        data = file.read()
+        for name in NAMES:
+            data = data.replace(name, str(request.form.get(name))) # replace placeholders
     
-    with open("50 USC 1801 (f)-z3-tmp2.txt", "w") as file:
-        file.write(data2)
+    with open("50 USC 1801 (f)-spass-tmp2.txt", "w") as file:
+        file.write(data)
 
-    # USE SELENIUM TO SOLVE IT ACCORDINGLY
+    # USE SELENIUM TO OPEN WEBSPASS
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     browser.get("https://webspass.spass-prover.org/")
+    # browser.maximize_window() # use if want to maximize the intermediary window
 
+    # FIND THE INPUT TEXTAREA PORTION
+    file = open("50 USC 1801 (f)-spass-tmp2.txt", "r").read()
+    print(file)
+    print(type(file))
+        
+    input = browser.find_element(By.XPATH, value="//textarea[@name='textinput']")
+    input.clear()
+    browser.execute_script('arguments[0].value=arguments[1]', input, file)
+    sleep(5.0)
 
-    browser.quit()
+    # FIND THE SUBMIT BUTTON AND PRESS IT (after some delay)
+    submit = browser.find_element(By.XPATH, value="//input[@value=' Submit Form ']")
+    submit.click()
 
-    # USE Z3 SOLVER ACORDINGLY
-    s = Solver()
-    s.from_file("50 USC 1801 (f)-z3-tmp1.txt") # don't forget to change to tmp2
-    # print(s.check())
-    # print(s.model())
+    # SCRAPE THE RESULTS
+    result = browser.find_element(By.XPATH, value="//pre")
+    sleep(5.0)
 
-    return True
+    # RETURN THE CORRESPONDING RESULT
+    if "Proof found" in result.text:
+        browser.quit()
+        return True
+    else:
+        browser.quit()
+        return False
 
 # CREATE FLASK APP
 app = Flask(__name__)
