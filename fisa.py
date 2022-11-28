@@ -1,6 +1,6 @@
 from time import sleep # to use together with Selenium
 
-# IMPORT FLASK (for website server) AND Z3
+# IMPORT FLASK (for website server)
 from flask import *
 
 # IMPORT REQUIRED SELENIUM MODULES
