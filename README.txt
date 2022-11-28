@@ -33,10 +33,10 @@ Challenges/Difficulties
        it not injecting the full required file
     3. There were sevearl minor logical errors made in coming up with the final model
        for defining "Electronic Surveillance."
-    4.In defining the model, we ran into problems around fuzzy language. For instance, whereas (3) very clearly
+    4. In defining the model, we ran into problems around fuzzy language. For instance, whereas (3) very clearly
        states that intent is important, the other 3 definitions do not mention this term explicitly, but it seems
        to be inherently implied.
-    5.Moreover, there are definitions such as "reasonable expectation of privacy" that
+    5. Moreover, there are definitions such as "reasonable expectation of privacy" that
        were difficult to translate and ended up being taken as primitives that do not confer their complexity.
     6. For the front end itself, there were challenges in
        constructing questions that would not misrepresent anything. For instance, one of our questions is
