@@ -29,18 +29,32 @@
             text-align: center;
         }
 
+        #result {
+            padding: 5px
+        }
+
         #correct {
             background-color: lightgreen;
-            padding: 2px;
+            border-radius: 5px;
+
+            padding: 5px 10px;
+            margin: 5px;
         }
 
         #wrong {
             background-color: lightcoral;
-            padding: 2px;
+            border-radius: 5px;
+
+            padding: 5px 2px;
+            margin: 5px;
         }
         
         #waiting {
             background-color: lightblue;
+            border-radius: 5px;
+
+            padding: 5px 10px;
+            margin: 5px;
         }
     </style>
 </head>
@@ -51,55 +65,60 @@
     </div>
     <div id="form" class="style">
         <form method="post">
-            How was the information acquired?<select name="formAcqu" id="formAcqu"> <!--this maps to formAcqu(message,)-->
+            How was the information acquired?<select name="*formAcqu*" id="formAcqu"> <!--this maps to formAcqu(message,)-->
                 <option value="electronic">Electronic device</option>
                 <option value="mechanical">Mechanical device</option>
                 <option value="otherSurv">Other Surveillance Device</option>
                 <option value="none">None of the above</option>
             </select>
             <br/><br/>
-            What was the format of the communication?<select name="form" id="form"> <!--this maps to form(message,)-->
+            What was the format of the communication?<select name="*form*" id="form"> <!--this maps to form(message,)-->
                 <option value="radio">Radio</option>
                 <option value="wire">Wire</option>
                 <option value="none">None of the above</option>
             </select>
             <br/><br/>
-            What is the sender's nationality?<select name="nationalitySender" id="nationalitySender"> <!--this maps to nationality(sender,)-->
+            What is the sender's nationality?<select name="*nationalitySender*" id="nationalitySender"> <!--this maps to nationality(sender,)-->
                 <option value="usa">USA</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            What is the sender's location?<select name="locationSender" id="locationSender"> <!--this maps to location(sender,)-->
+            What is the sender's location?<select name="*locationSender*" id="locationSender"> <!--this maps to location(sender,)-->
                 <option value="usa">USA</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
-            What is the receiver's nationality?<select name="nationalityReceiver" id="nationalityReceiver"> <!--this maps to nationality(receiver,)-->
+            What is the receiver's nationality?<select name="*nationalityReceiver*" id="nationalityReceiver"> <!--this maps to nationality(receiver,)-->
                 <option value="usa">USA</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
             What is the receiver's location?<select name="locationReceiver" id="locationReceiver"> <!--this maps to location(receiver,)-->
+            What is the receiver's location?<select name="*locationReceiver*" id="locationReceiver">
                 <option value="usa">USA</option>
                 <option value="none">Foreign</option>
             </select>
             <br/><br/>
             Was there a reasonable expectation of privacy?<select name="privacy" id="privacy"> <!--this maps to privacy(targetPerson,)-->
+            Was there a reasonable expectation of privacy?<select name="*privacy*" id="privacy">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
             Would a warrant be required for law enforcement purposes?<select name="needWarrant" id="needWarrant"> <!--this maps to needWarrant(targetPerson,)-->
+            Would a warrant be required for law enforcement purposes?<select name="*needWarrant*" id="needWarrant">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
             Is the person being targeting a USA national?<select name="targetNationality" id="targetNationality"> <!--this maps to nationality(targetPerson,)-->
+            Is the person being targeting a USA national?<select name="*targetNationality*" id="targetNationality">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <br/><br/>
             Did the target consent to being monitored?<select name="consent" id="consent"> <!--this maps to consent(message,)-->
+            Did the target consent to being monitored?<select name="*consent*" id="consent">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -107,6 +126,7 @@
             Section 2511
             <br/><br/>
             Did the target authorize interception of communication?<select name="authorize" id="authorize"> <!--this maps to authorize(message,)-->
+            Did the target authorize interception of communication?<select name="*authorize*" id="authorize">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
@@ -126,7 +146,7 @@
                 <option value="no">No</option>
             </select>
             <br/><br/>
-            Non section2511
+            Non-Section2511
             <br/><br/>
             Was the acquiring intentional?<select name="intentional" id="intentional"> <!--this maps to intentional(message,)-->
                 <option value="yes">Yes</option>
@@ -153,7 +173,7 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <div id="result" class="style center">
+    <div id="result" class="center">
         {% if data == True %}
             <p id="correct">
                 Surveillance Scenario DOES fall under FISA's definition of "Electronic Surveillance"
