@@ -9,8 +9,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 
 NAMES = [
     "*formAcqu*",
@@ -52,8 +50,6 @@ def logic_handler(request):
 
     # FIND THE INPUT TEXTAREA PORTION
     file = open("50 USC 1801 (f)-spass-tmp2.txt", "r").read()
-    print(file)
-    print(type(file))
         
     input = browser.find_element(By.XPATH, value="//textarea[@name='textinput']")
     input.clear()
