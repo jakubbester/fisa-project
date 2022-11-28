@@ -42,7 +42,7 @@ formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetP
 formula(forall([X],implies(or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv))),formAcquSurv(X)))).
 formula(forall([X],implies(form(X,wire),formWireSurv(X)))).
 formula(forall([X],implies(or(and(nationality(sender,usa),location(sender,usa)),and(nationality(receiver,usa),location(receiver,usa))),formSendReceive(X)))).
-formula(forall([X],implies(and(consent(message,no),not(section2511(message,yes))),formConsent(X)))).
+formula(forall([X],implies(and(consent(message,no),section2511(message,no)),formConsent(X)))).
 
 %def 3
 formula(forall([X],implies(and(intentional(X,yes),or(formAcqu(X,electronic),or(formAcqu(X,mechanical),formAcqu(X,otherSurv)))),formIntlAcquSurv(X)))).
@@ -51,27 +51,20 @@ formula(forall([X],implies(and(needWarrant(targetPerson,yes),and(privacy(targetP
 
 %def 4
 formula(forall([X],implies(and(monitor(message,yes),and(location(device,usa),or(installOrUse(X,electronic),or(installOrUse(X,mechanical),installOrUse(X,otherSurv))))),formInstallUse(X)))).
-formula(forall([X],implies(not(or(form(X,radio),form(X,wire))),formNotWireRadioSurv(X)))).
+formula(forall([X],implies(form(X,none),formNotWireRadioSurv(X)))).
 formula(forall([X],implies(and(needWarrant(targetPerson,yes),privacy(targetPerson,yes)),formPriv(X)))).
 
 %form2511
-formula(forall([X],implies(and(onlyRelevant(targetPerson,yes),relevant(targetPerson,yes),and(investigation(targetPerson,yes),authorize(targetPerson,yes))),section2511(message,yes)))).
+formula(forall([X],implies(or(onlyRelevant(targetPerson,no),relevant(targetPerson,no),or(investigation(targetPerson,no),authorize(targetPerson,no))),section2511(message,no)))).
 
 %to get from frontend
-formula(formAcqu(message,otherSurv)).
-formula(form(message,wire)).
-formula(nationality(sender,usa)).
-formula(location(sender,usa)).
-formula(nationality(receiver,none)).
-formula(location(receiver,none)).
-formula(nationality(targetPerson,usa)).
-formula(privacy(targetPerson,yes)).
-formula(needWarrant(targetPerson,yes)).
-formula(consent(message,no)).
-formula(intentional(message,yes)).
-formula(installOrUse(message,otherSurv)).
 formula(monitor(message,yes)).
 formula(location(device,usa)).
+formula(installOrUse(message,mechanical)).
+formula(form(message,radio)).
+formula(needWarrant(targetPerson,yes)).
+formula(privacy(targetPerson,yes)).
+
 
 %overall
 formula(sentBy(message,sender)).
