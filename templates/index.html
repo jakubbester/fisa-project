@@ -29,18 +29,32 @@
             text-align: center;
         }
 
+        #result {
+            padding: 5px;
+        }
+
         #correct {
             background-color: lightgreen;
-            padding: 2px;
+            border-radius: 5px;
+
+            padding: 5px 10px;
+            margin: 5px;
         }
 
         #wrong {
             background-color: lightcoral;
-            padding: 2px;
+            border-radius: 5px;
+
+            padding: 5px 2px;
+            margin: 5px;
         }
         
         #waiting {
             background-color: lightblue;
+            border-radius: 5px;
+
+            padding: 5px 10px;
+            margin: 5px;
         }
     </style>
 </head>
@@ -158,7 +172,7 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <div id="result" class="style center">
+    <div id="result" class="center">
         {% if data == True %}
             <p id="correct">
                 Surveillance Scenario DOES fall under FISA's definition of "Electronic Surveillance"
