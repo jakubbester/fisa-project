@@ -58,12 +58,24 @@ formula(forall([X],implies(and(needWarrant(targetPerson,yes),privacy(targetPerso
 formula(forall([X],implies(or(onlyRelevant(targetPerson,no),relevant(targetPerson,no),or(investigation(targetPerson,no),authorize(targetPerson,no))),section2511(message,no)))).
 
 %to get from frontend
-formula(monitor(message,yes)).
-formula(location(device,usa)).
-formula(installOrUse(message,mechanical)).
-formula(form(message,radio)).
-formula(needWarrant(targetPerson,yes)).
-formula(privacy(targetPerson,yes)).
+formula(formAcqu(message,none)).
+formula(form(message,none)).
+formula(nationality(sender,none)).
+formula(location(sender,none)).
+formula(nationality(receiver,none)).
+formula(location(receiver,none)).
+formula(privacy(targetPerson,no)).
+formula(needWarrant(targetPerson,no)).
+formula(nationality(targetPerson,none)).
+formula(consent(message,yes)).
+formula(authorize(targetPerson,yes)).
+formula(investigation(targetPerson,yes)).
+formula(relevant(targetPerson,yes)).
+formula(onlyRelevant(targetPerson,yes)).
+formula(intentional(message,no)).
+formula(installOrUse(message,none)).
+formula(monitor(message,no)).
+formula(location(device,none)).
 
 
 %overall
